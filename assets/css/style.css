@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap');
+
+body {
+  font-family: 'Fredoka', sans-serif; /* Fuente Fredoka */
+  background-color: #fff9f3; /* Fondo naranja claro */
+  color: #4a321c; /* Marrón oscuro para texto */
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ff8c42; /* Naranja vibrante */
+  margin-bottom: 20px;
+  position: relative;
+}
+
+h1::before {
+  content: "🐰 "; /* Emoji decorativo */
+  font-size: 1.5rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Ajustar en múltiples líneas si es necesario */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffb347; /* Naranja pastel */
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #a8dda8; /* Verde pastel */
+  color: #ffffff;
+}
+
+.tab-button:hover {
+  background-color: #ff8c42; /* Naranja vibrante */
+}
+
+#checklist {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#checklist thead {
+  background-color: #ffb347; /* Naranja pastel */
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#checklist th, #checklist td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ffe8d9; /* Naranja muy claro */
+}
+
+#checklist tbody tr:nth-child(odd) {
+  background-color: #fff4e6; /* Alternar filas en naranja muy claro */
+}
+
+#checklist tbody tr:nth-child(even) {
+  background-color: #ffffff; /* Blanco */
+}
+
+#checklist img {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #ffb347; /* Naranja pastel */
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 0; /* Asegúrate de que no haya margen lateral */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff8c42; /* Naranja vibrante */
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#download-buttons {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  flex-wrap: wrap; /* Permitir que los botones se ajusten en varias líneas si es necesario */
+  gap: 15px; /* Espaciado entre los botones */
+  margin-top: 20px;
+  text-align: center; /* Centrado adicional por seguridad */
+  position: sticky; /* Hacer la sección sticky */
+  bottom: 0; /* Mantenerlo en la parte inferior de la página */
+  padding: 10px 0; /* Espaciado para que se vea bien */
+  z-index: 10; /* Asegurarse de que quede encima de otros elementos */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añadir sombra */
+}
+
+#downloadJson {
+  display: none;
+}
+
+#downloadJson::before {
+  content: "🥕"; /* Emoji de zanahoria */
+}
+
+#downloadExcel::before {
+  content: "🥕"; /* Emoji de zanahoria */
+}
+
+table {
+  margin-top: 20px;
+}
+
+td {
+  padding: 12px 15px;
+}
+
+body > * {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body, .tabs, table, button {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .tab-button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  td, th {
+    padding: 8px;
+  }
+
+  #download-buttons {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  button {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  #download-buttons {
+    flex-direction: column; /* Botones en columna para pantallas muy pequeñas */
+    gap: 10px;
+  }
+}
