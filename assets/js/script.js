@@ -55,6 +55,16 @@ function updateChecklist(items) {
   const headerRow = document.createElement("tr");
   const checkboxHeader = document.createElement("th");
   checkboxHeader.textContent = "Select";
+  checkboxHeader.style.cursor = "pointer";
+  checkboxHeader.addEventListener("click", () => {
+    const checkboxes = checklistTable.querySelectorAll("input[type='checkbox']");
+    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = !allChecked;
+      const event = new Event('change');
+      checkbox.dispatchEvent(event);
+    });
+  });
   headerRow.appendChild(checkboxHeader);
 
   columns.forEach((col) => {
@@ -74,6 +84,7 @@ function updateChecklist(items) {
     checkbox.checked = item.checked || false;
     checkbox.addEventListener("change", () => {
       item.checked = checkbox.checked;
+      saveChecklistState();
     });
     checkboxCell.appendChild(checkbox);
     row.appendChild(checkboxCell);
@@ -132,4 +143,19 @@ downloadExcelBtn.addEventListener("click", () => {
   XLSX.writeFile(workbook, `${currentTab}.xlsx`);
 });
 
+function saveChecklistState() {
+  localStorage.setItem('checklistState', JSON.stringify(data));
+}
+
+function loadChecklistState() {
+  const savedState = localStorage.getItem('checklistState');
+  if (savedState) {
+    data = JSON.parse(savedState);
+    if (data[currentTab] && data[currentTab].length > 0) {
+      updateChecklist(data[currentTab]);
+    }
+  }
+}
+
 loadExcelFile();
+loadChecklistState();
