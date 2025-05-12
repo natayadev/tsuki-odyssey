@@ -85,6 +85,7 @@ function updateChecklist(items) {
     checkbox.addEventListener("change", () => {
       item.checked = checkbox.checked;
       saveChecklistState();
+      updateRowStyle(row, checkbox.checked);
     });
     checkboxCell.appendChild(checkbox);
     row.appendChild(checkboxCell);
@@ -122,8 +123,16 @@ function updateChecklist(items) {
       row.appendChild(cell);
     });
 
+    updateRowStyle(row, checkbox.checked);
     checklistTable.appendChild(row);
   });
+}
+
+function updateRowStyle(row, isChecked) {
+  console.log(`Updating row style: ${row}, Checked: ${isChecked}`);
+  const color = isChecked ? 'green' : 'red';
+  row.style.border = `1px solid ${color}`;
+  row.style.color = color;
 }
 
 downloadJsonBtn.addEventListener("click", () => {
