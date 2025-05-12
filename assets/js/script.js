@@ -131,7 +131,6 @@ function updateChecklist(items) {
 function updateRowStyle(row, isChecked) {
   console.log(`Updating row style: ${row}, Checked: ${isChecked}`);
   const color = isChecked ? 'green' : 'red';
-  row.style.border = `1px solid ${color}`;
   row.style.color = color;
 }
 
